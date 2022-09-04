@@ -1,0 +1,30 @@
+{
+    "name": "alzundaz/bug-free-fiesta",
+    "description": "Test github action &amp; code climate with php",
+    "type": "library",
+    "license": "GPL-3.0-or-later",
+    "require": {
+        "php": ">=8"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.7",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alzundaz\\BugFreeFiesta\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Alzundaz\\BugFreeFiesta\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "tests": [
+            "@putenv XDEBUG_MODE=coverage",
+            "phpcs",
+            "phpunit --coverage-html coverage"
+        ]
+    }
+}
