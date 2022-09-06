@@ -46,41 +46,11 @@ jobs:
           ${{ runner.os }}-php-${{ matrix.plateform }}-${{ matrix.php }}-
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
-    - name: Run test code smell
+    - name: Run test code smell PHPCs
       run: ./vendor/bin/phpcs
+    - name: Run test code smell PHPStan Sources
+      run: ./vendor/bin/phpstan analyse --level max src
+    - name: Run test code smell PHPStan Tests
+      run: ./vendor/bin/phpstan analyse --level 0 tests
     - name: Run test unit
       run: ./vendor/bin/phpunit
-
-  coverage:
-    if: github.event_name == 'push'
-    needs:
-    - test
-    name: Coverage
-    runs-on: ubuntu-latest
-    env:
-      XDEBUG_MODE: coverage
-
-    steps:
-    - uses: actions/checkout@v3
-    - uses: shivammathur/setup-php@v2
-      with:
-        php-version: 8.1
-
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
-
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v3
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-coverage-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-coverage-
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
-    - uses: paambaati/codeclimate-action@v3.0.0
-      env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-      with:
-        coverageCommand: ./vendor/bin/phpunit --coverage-clover ./clover.xml

@@ -4,34 +4,55 @@ namespace Alzundaz\BugFreeFiesta;
 
 use Exception;
 
+/**
+ * @template KEY string | int
+ * @template VALUE
+ */
 class Collection
 {
+    /**
+     * @param array<VALUE> $items
+     */
     public function __construct(private array $items = [])
     {
     }
 
-    public function all()
+    /**
+     * @return array<VALUE>
+     */
+    public function all(): array
     {
         return $this->items;
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->items);
     }
 
-    public function get($key, $default = null)
+    /**
+     * @param KEY $key
+     * @param VALUE|null $default
+     * @return VALUE|null
+     */
+    public function get(mixed $key, mixed $default = null)
     {
         return $this->items[$key] ?? $default;
     }
 
-    public function set($key, $value)
+    /**
+     * @param KEY $key
+     * @param VALUE $value
+     * @return VALUE
+     */
+    public function set(mixed $key, mixed $value)
     {
         return $this->items[$key] = $value;
     }
 
     /**
      * @throws Exception
+     * @return VALUE
      */
     public function first()
     {
@@ -42,6 +63,7 @@ class Collection
 
     /**
      * @throws Exception
+     * @return VALUE
      */
     public function last()
     {
@@ -50,11 +72,17 @@ class Collection
         return $this->items[$this->count() - 1];
     }
 
+    /**
+     * @return bool
+     */
     public function isEmpty()
     {
         return empty($this->items);
     }
 
+    /**
+     * @return bool
+     */
     public function isNotEmpty()
     {
         return !$this->isEmpty();
