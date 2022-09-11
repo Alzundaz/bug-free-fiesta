@@ -15,4 +15,9 @@ class Custom
     {
         $this->collection->set($str, $str);
     }
+
+    public function get(string $str): string | null
+    {
+        return $this->collection->get($str);
+    }
 }

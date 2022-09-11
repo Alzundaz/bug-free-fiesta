@@ -4,7 +4,8 @@
     "type": "library",
     "license": "GPL-3.0-or-later",
     "require": {
-        "php": ">=8"
+        "php": ">=8",
+        "ext-simplexml": "*"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.7",
@@ -27,7 +28,8 @@
             "phpcs",
             "phpstan analyse --level max src",
             "phpstan analyse --level 0 tests",
-            "phpunit --coverage-html coverage"
+            "phpunit --coverage-html ./coverage --coverage-clover ./coverage/clover.xml",
+            "php coverage-check.php ./coverage/clover.xml 90"
         ]
     }
 }

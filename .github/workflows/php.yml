@@ -46,11 +46,11 @@ jobs:
           ${{ runner.os }}-php-${{ matrix.plateform }}-${{ matrix.php }}-
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
-    - name: Run test code smell PHPCs
+    - name: Run analyse PHPCs
       run: ./vendor/bin/phpcs
-    - name: Run test code smell PHPStan Sources
+    - name: Run analyse PHPStan Sources code
       run: ./vendor/bin/phpstan analyse --level max src
-    - name: Run test code smell PHPStan Tests
+    - name: Run analyse PHPStan Tests code
       run: ./vendor/bin/phpstan analyse --level 0 tests
-    - name: Run test unit
-      run: ./vendor/bin/phpunit
+    - name: Run unit tests
+      run: ./vendor/bin/phpunit  --coverage-clover ./clover.xml && php ./coverage-check.php ./clover.xml 90

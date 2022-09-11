@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "85335189b1c15f26278e4f73b4d26fcb",
+    "content-hash": "457837a8c298619a74f6e96c0c875606",
     "packages": [],
     "packages-dev": [
         {
@@ -305,16 +305,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.8.4",
+            "version": "1.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "eed4c9da531f6ebb4787235b6fb486e2c20f34e5"
+                "reference": "f6598a5ff12ca4499a836815e08b4d77a2ddeb20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/eed4c9da531f6ebb4787235b6fb486e2c20f34e5",
-                "reference": "eed4c9da531f6ebb4787235b6fb486e2c20f34e5",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f6598a5ff12ca4499a836815e08b4d77a2ddeb20",
+                "reference": "f6598a5ff12ca4499a836815e08b4d77a2ddeb20",
                 "shasum": ""
             },
             "require": {
@@ -344,7 +344,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.8.4"
+                "source": "https://github.com/phpstan/phpstan/tree/1.8.5"
             },
             "funding": [
                 {
@@ -360,7 +360,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-03T13:08:04+00:00"
+            "time": "2022-09-07T16:05:32+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1855,7 +1855,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8"
+        "php": ">=8",
+        "ext-simplexml": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
